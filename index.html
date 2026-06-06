@@ -9,7 +9,7 @@
   <meta name="keywords" content="AI developer, full-stack developer, Algeria, web development, chatbots, automation, React, Node.js, Python, machine learning">
   <meta property="og:title" content="Akal Abdelhak Amine | AI & Full-Stack Developer">
   <meta property="og:description" content="AI & Full-Stack Developer based in Algeria. Building modern web apps and intelligent AI solutions.">
-  <meta property="og:image" content="YOUR_PHOTO_URL">
+  <meta property="og:image" content="piic.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Akal Abdelhak Amine | AI & Full-Stack Developer">
@@ -986,6 +986,38 @@ body.ar-mode div {
     font-family: "Font Awesome 6 Free",
                  "Font Awesome 6 Brands" !important;
    }
+   .nav-logo img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00d4ff;
+    box-shadow: 0 0 15px rgba(0,212,255,0.4);
+    transition: 0.4s;
+}
+
+.nav-logo img:hover{
+    transform: scale(1.08);
+    box-shadow:
+        0 0 15px rgba(0,212,255,0.5),
+        0 0 30px rgba(0,212,255,0.3);
+}
+.nav-logo img{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    object-fit: cover;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{
+        transform: translateY(0);
+    }
+    50%{
+        transform: translateY(-4px);
+    }
+}
   </style>
 </head>
 <body>
@@ -1009,7 +1041,9 @@ body.ar-mode div {
 
   <!-- ─── NAVBAR ─── -->
   <nav id="navbar">
-    <a href="#hero" class="nav-logo">AA.</a>
+    <a href="#hero" class="nav-logo">
+    <img src="piic.png" alt="Logo">
+</a>
     <div class="nav-links">
       <a href="#about" data-en="About" data-ar="عني">About</a>
       <a href="#services" data-en="Services" data-ar="الخدمات">Services</a>
