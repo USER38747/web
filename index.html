@@ -18,25 +18,16 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <!-- أضف هذه في <head> -->
-<meta name="robots" content="index, follow">
-<meta name="googlebot" content="index, follow">
-<link rel="canonical" href="https://user38747.github.io/web/">
-
-<!-- تحسين وصف الموقع -->
-<meta name="description" content="Akal Abdelhak Amine - AI Engineering Student & Freelance Web Developer في الجزائر. أقدم خدمات تطوير الويب، الذكاء الاصطناعي، والتجارة الإلكترونية. تواصل معي لمشروعك القادم.">
-
-<!-- كلمات مفتاحية -->
-<meta name="keywords" content="مطور ويب الجزائر, AI developer Algeria, full-stack developer, chatbot, e-commerce">
-
-<!-- Open Graph للفيسبوك -->
-<meta property="og:title" content="Akal Abdelhak Amine | AI Engineering Student & Freelance Developer">
-<meta property="og:description" content="مطور ويب وذكاء اصطناعي في الجزائر">
-<meta property="og:url" content="https://user38747.github.io/web/">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <link rel="canonical" href="https://user38747.github.io/web/">
+    <meta name="description" content="Akal Abdelhak Amine - AI Engineering Student & Freelance Web Developer في الجزائر. أقدم خدمات تطوير الويب، الذكاء الاصطناعي، والتجارة الإلكترونية. تواصل معي لمشروعك القادم.">
+    <meta name="keywords" content="مطور ويب الجزائر, AI developer Algeria, full-stack developer, chatbot, e-commerce">
+    <meta property="og:title" content="Akal Abdelhak Amine | AI Engineering Student & Freelance Developer">
+    <meta property="og:description" content="مطور ويب وذكاء اصطناعي في الجزائر">
+    <meta property="og:url" content="https://user38747.github.io/web/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
   <style>
     body.ar-mode {
     font-family: 'Noto Kufi Arabic', sans-serif;
@@ -105,6 +96,22 @@ body.ar-mode div {
     font-family: 'Noto Kufi Arabic', sans-serif;
 }
 
+.floating-name {
+    display: inline-block;
+    animation: floatName 3s ease-in-out infinite;
+}
+
+@keyframes floatName {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+
+
     /* Scrollbar */
     ::-webkit-scrollbar { width: 6px; }
     ::-webkit-scrollbar-track { background: var(--surface2); }
@@ -140,16 +147,9 @@ body.ar-mode div {
     .nav-links a:hover { color: var(--primary); background: var(--surface2); }
 
     .nav-right { display: flex; align-items: center; gap: 12px; }
-   
 
-
-
-   .fa-whatsapp { color:#25D366; }
-   .fa-telegram { color:#229ED9; }
-
-
-
-     
+    .fa-whatsapp { color:#25D366; }
+    .fa-telegram { color:#229ED9; }
 
     .lang-toggle {
       display: flex; align-items: center; gap: 0;
@@ -221,7 +221,6 @@ body.ar-mode div {
       50% { transform: scale(1.1) translate(20px,-20px); }
     }
 
-    /* Grid dots background */
     .hero-grid {
       position: absolute; inset: 0; z-index: 0;
       background-image: radial-gradient(circle, rgba(26,86,219,0.12) 1px, transparent 1px);
@@ -302,6 +301,8 @@ body.ar-mode div {
       text-decoration: none; font-weight: 600; font-size: 0.95rem;
       box-shadow: 0 6px 20px rgba(26,86,219,0.35);
       transition: var(--transition); display: inline-flex; align-items: center; gap: 8px;
+      position: relative;
+      overflow: hidden;
     }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(26,86,219,0.45); }
 
@@ -311,8 +312,58 @@ body.ar-mode div {
       text-decoration: none; font-weight: 600; font-size: 0.95rem;
       background: var(--surface); transition: var(--transition);
       display: inline-flex; align-items: center; gap: 8px;
+      position: relative;
+      overflow: hidden;
     }
     .btn-outline:hover { border-color: var(--primary); color: var(--primary); transform: translateY(-3px); box-shadow: var(--shadow); }
+
+    /* Ripple effect */
+    .ripple {
+      position: absolute; border-radius: 50%; background: rgba(255,255,255,0.5);
+      transform: scale(0); animation: rippleAnim 0.6s linear forwards;
+      pointer-events: none;
+    }
+    @keyframes rippleAnim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* Magnetic effect */
+    .btn-primary, .btn-outline {
+      transition: transform 0.2s ease-out;
+    }
+
+    /* Typewriter */
+    .typewriter-wrap {
+      display: inline-block;
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--primary);
+      background: var(--surface2);
+      padding: 6px 16px;
+      border-radius: 40px;
+      margin-bottom: 20px;
+      animation: fadeUp 0.8s 0.15s ease both;
+    }
+    #typed-text {
+      font-weight: 700;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .typed-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1.2em;
+      background: var(--primary);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: cursorBlink 1s step-end infinite;
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
 
     /* Hero Right - Avatar + Floating Cards */
     .hero-visual {
@@ -365,40 +416,75 @@ body.ar-mode div {
       line-height: 1;
     }
 
-    /* Floating Cards */
-    .float-card {
-      position: absolute; z-index: 10;
+    /* ─── SKILLS SECTION WITH 3D CARDS ─── */
+    #skills { background: linear-gradient(180deg, var(--bg) 0%, var(--surface2) 50%, var(--bg) 100%); }
+    #skills .section { max-width: 1200px; margin: 0 auto; }
+
+    .skills-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .skill-category {
       background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 14px 18px;
-      box-shadow: var(--shadow-lg);
-      display: flex; align-items: center; gap: 12px;
-      white-space: nowrap;
-      animation: float-anim 4s ease-in-out infinite;
+      border-radius: var(--radius-lg); padding: 32px;
+      transition: transform 0.3s ease-out, box-shadow 0.3s ease;
+      position: relative; overflow: hidden;
+      transform-style: preserve-3d;
+      cursor: pointer;
     }
-    .float-card:nth-child(2) { animation-delay: -1s; }
-    .float-card:nth-child(3) { animation-delay: -2s; }
-    .float-card:nth-child(4) { animation-delay: -3s; }
-
-    @keyframes float-anim {
-      0%,100%{transform:translateY(0px);}
-      50%{transform:translateY(-8px);}
+    .skill-category::after {
+      content: ''; position: absolute; bottom: -60px; right: -60px;
+      width: 150px; height: 150px; border-radius: 50%;
+      background: var(--gradient2); opacity: 0.5;
+      transition: var(--transition);
     }
+    .skill-category:hover { box-shadow: var(--shadow-xl); }
 
-    .float-card.card-exp { top: 40px; right: -30px; }
-    .float-card.card-tech { bottom: 80px; right: -50px; }
-    .float-card.card-coffee { bottom: 40px; left: -40px; }
-
-    .float-icon {
-      width: 40px; height: 40px; border-radius: 12px;
+    .skill-cat-icon {
+      width: 52px; height: 52px; border-radius: 14px;
       background: var(--gradient2); display: flex;
-      align-items: center; justify-content: center; font-size: 1.4rem;
-      flex-shrink: 0;
+      align-items: center; justify-content: center;
+      font-size: 1.6rem; margin-bottom: 20px;
+      border: 1px solid var(--border);
     }
 
-    .float-text .top { font-size: 0.7rem; color: var(--text-3); font-weight: 500; }
-    .float-text .bot { font-size: 0.95rem; font-weight: 700; color: var(--text); }
+    .skill-category h3 {
+      font-size: 1rem; font-weight: 700; margin-bottom: 20px; color: var(--text);
+    }
 
-    /* ─── ABOUT ─── */
+    .skill-item {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .skill-name { font-size: 0.88rem; font-weight: 500; color: var(--text-2); }
+    .skill-pct { font-size: 0.8rem; font-weight: 600; color: var(--primary); }
+
+    .skill-bar {
+      height: 6px; background: var(--surface3);
+      border-radius: 10px; margin-top: 6px; overflow: hidden;
+    }
+    .skill-fill {
+      height: 100%; border-radius: 10px;
+      background: var(--gradient);
+      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+      width: 0;
+    }
+
+    /* Tech Pills */
+    .tech-pills {
+      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
+    }
+    .tech-pill {
+      padding: 6px 14px; border-radius: 40px;
+      background: var(--surface2); border: 1px solid var(--border);
+      font-size: 0.78rem; font-weight: 600; color: var(--text-2);
+      transition: var(--transition); cursor: default;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+    .tech-pill:hover { background: var(--gradient); color: white; border-color: transparent; transform: translateY(-1px); }
+
+    /* ─── OTHER SECTIONS (unchanged) ─── */
     .section {
       padding: 100px 40px;
       max-width: 1200px; margin: 0 auto;
@@ -470,73 +556,7 @@ body.ar-mode div {
     .about-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
     .about-card p { font-size: 0.88rem; color: var(--text-3); line-height: 1.7; }
 
-    /* ─── SKILLS ─── */
-    #skills { background: linear-gradient(180deg, var(--bg) 0%, var(--surface2) 50%, var(--bg) 100%); }
-    #skills .section { max-width: 1200px; margin: 0 auto; }
-
-    .skills-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-
-    .skill-category {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius-lg); padding: 32px;
-      transition: var(--transition); position: relative; overflow: hidden;
-    }
-    .skill-category::after {
-      content: ''; position: absolute; bottom: -60px; right: -60px;
-      width: 150px; height: 150px; border-radius: 50%;
-      background: var(--gradient2); opacity: 0.5;
-      transition: var(--transition);
-    }
-    .skill-category:hover { box-shadow: var(--shadow-xl); transform: translateY(-4px); }
-    .skill-category:hover::after { transform: scale(1.3); }
-
-    .skill-cat-icon {
-      width: 52px; height: 52px; border-radius: 14px;
-      background: var(--gradient2); display: flex;
-      align-items: center; justify-content: center;
-      font-size: 1.6rem; margin-bottom: 20px;
-      border: 1px solid var(--border);
-    }
-
-    .skill-category h3 {
-      font-size: 1rem; font-weight: 700; margin-bottom: 20px; color: var(--text);
-    }
-
-    .skill-item {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 14px;
-    }
-    .skill-name { font-size: 0.88rem; font-weight: 500; color: var(--text-2); }
-    .skill-pct { font-size: 0.8rem; font-weight: 600; color: var(--primary); }
-
-    .skill-bar {
-      height: 6px; background: var(--surface3);
-      border-radius: 10px; margin-top: 6px; overflow: hidden;
-    }
-    .skill-fill {
-      height: 100%; border-radius: 10px;
-      background: var(--gradient);
-      transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
-      width: 0;
-    }
-
-    /* Tech Pills */
-    .tech-pills {
-      display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px;
-    }
-    .tech-pill {
-      padding: 6px 14px; border-radius: 40px;
-      background: var(--surface2); border: 1px solid var(--border);
-      font-size: 0.78rem; font-weight: 600; color: var(--text-2);
-      transition: var(--transition); cursor: default;
-      font-family: 'IBM Plex Mono', monospace;
-    }
-    .tech-pill:hover { background: var(--gradient); color: white; border-color: transparent; transform: translateY(-1px); }
-
-    /* ─── PROJECTS ─── */
+    /* Projects */
     #projects { background: var(--surface2); padding: 100px 0; }
     #projects .section { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
@@ -601,7 +621,7 @@ body.ar-mode div {
       font-family: 'IBM Plex Mono', monospace;
     }
 
-    /* ─── ACHIEVEMENTS ─── */
+    /* Achievements */
     .achievements-grid {
       display: grid; grid-template-columns: repeat(4, 1fr);
       gap: 24px; text-align: center;
@@ -634,7 +654,7 @@ body.ar-mode div {
       line-height: 1.6;
     }
 
-    /* ─── CONTACT ─── */
+    /* Contact */
     #contact { background: var(--surface2); padding: 100px 0 0; }
     #contact .section { max-width: 1200px; margin: 0 auto; padding: 0 40px 80px; }
 
@@ -646,7 +666,6 @@ body.ar-mode div {
     .contact-info h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 16px; }
     .contact-info p { color: var(--text-3); line-height: 1.7; margin-bottom: 40px; font-size: 0.95rem; }
 
-    /* ─── CONTACT ICONS ROW ─── */
     .contact-icons-row {
       display: flex;
       align-items: center;
@@ -677,7 +696,6 @@ body.ar-mode div {
       color: var(--primary);
       background: var(--surface2);
     }
-    /* Tooltip on hover */
     .contact-icon-link::after {
       content: attr(data-tooltip);
       position: absolute;
@@ -700,7 +718,6 @@ body.ar-mode div {
       opacity: 1;
     }
 
-    /* Contact Form */
     .contact-form {
       background: var(--surface); border: 1px solid var(--border);
       border-radius: var(--radius-xl); padding: 40px;
@@ -745,7 +762,7 @@ body.ar-mode div {
     .form-submit:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(26,86,219,0.4); }
     .form-submit:active { transform: translateY(0); }
 
-    /* ─── FOOTER ─── */
+    /* Footer */
     footer {
       background: var(--text); color: white;
       padding: 60px 40px 32px;
@@ -776,7 +793,7 @@ body.ar-mode div {
       font-size: 0.82rem; color: #64748b;
     }
 
-    /* ─── BACK TO TOP ─── */
+    /* Back to top */
     #back-top {
       position: fixed; bottom: 28px; right: 28px; z-index: 999;
       width: 48px; height: 48px; border-radius: 50%;
@@ -790,7 +807,7 @@ body.ar-mode div {
     #back-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
     #back-top:hover { transform: translateY(-3px); }
 
-    /* ─── ANIMATIONS ─── */
+    /* Animations */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
@@ -799,10 +816,6 @@ body.ar-mode div {
       from { opacity: 0; transform: translateX(40px); }
       to { opacity: 1; transform: translateX(0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
 
     .reveal {
       opacity: 0; transform: translateY(40px);
@@ -810,14 +823,13 @@ body.ar-mode div {
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── DIVIDER ─── */
     .section-divider {
       width: 100%; height: 1px;
       background: linear-gradient(90deg, transparent, var(--border), transparent);
       margin: 0 auto;
     }
 
-    /* ─── MOBILE MENU ─── */
+    /* Mobile menu */
     .mobile-menu {
       display: none; position: fixed; inset: 0; z-index: 999;
       background: var(--surface);
@@ -838,7 +850,27 @@ body.ar-mode div {
       font-size: 1.3rem; display: flex; align-items: center; justify-content: center;
     }
 
-    /* ─── RESPONSIVE ─── */
+    /* Progress bar */
+    #progress-bar {
+      position: fixed; top: 0; left: 0; z-index: 1001;
+      height: 3px; width: 0; background: var(--gradient);
+      transition: width 0.1s;
+    }
+
+    .nav-logo img{
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      object-fit: cover;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float{
+      0%,100%{ transform: translateY(0); }
+      50%{ transform: translateY(-4px); }
+    }
+
+    /* Responsive */
     @media (max-width: 1024px) {
       .hero-container { grid-template-columns: 1fr; gap: 60px; text-align: center; }
       .hero-description { max-width: none; }
@@ -872,74 +904,20 @@ body.ar-mode div {
       .avatar-ring { width: 320px; height: 320px; }
     }
 
-    /* RTL Adjustments */
     body.ar-mode nav { direction: rtl; }
     body.ar-mode .hero-container { direction: rtl; }
     body.ar-mode .contact-method:hover { transform: translateX(-4px); }
     body.ar-mode .footer-col a:hover { transform: translateX(-4px); }
     body.ar-mode .hero-stats { justify-content: flex-start; }
 
-    /* ─── SECTION SCROLL HIGHLIGHT ─── */
     .nav-links a.active { color: var(--primary); background: var(--surface2); }
-
-    /* Progress bar */
-    #progress-bar {
-      position: fixed; top: 0; left: 0; z-index: 1001;
-      height: 3px; width: 0; background: var(--gradient);
-      transition: width 0.1s;
-    }
-    .fa,
-    .fas,
-    .far,
-    .fab,
-    .fa-solid,
-   .fa-brands {
-    font-family: "Font Awesome 6 Free",
-                 "Font Awesome 6 Brands" !important;
-   }
-   .nav-logo img{
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #00d4ff;
-    box-shadow: 0 0 15px rgba(0,212,255,0.4);
-    transition: 0.4s;
-}
-
-.nav-logo img:hover{
-    transform: scale(1.08);
-    box-shadow:
-        0 0 15px rgba(0,212,255,0.5),
-        0 0 30px rgba(0,212,255,0.3);
-}
-.nav-logo img{
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    object-fit: cover;
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%,100%{
-        transform: translateY(0);
-    }
-    50%{
-        transform: translateY(-4px);
-    }
-}
   </style>
 </head>
 <body>
 
-  <!-- Progress Bar -->
   <div id="progress-bar"></div>
-
-  <!-- Back to Top -->
   <button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-  <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <button class="mobile-close" onclick="closeMobile()">✕</button>
     <a href="#hero" onclick="closeMobile()" data-en="Home" data-ar="الرئيسية">Home</a>
@@ -950,11 +928,10 @@ body.ar-mode div {
     <a href="#contact" onclick="closeMobile()" data-en="Contact" data-ar="تواصل">Contact</a>
   </div>
 
-  <!-- ─── NAVBAR ─── -->
   <nav id="navbar">
     <a href="#hero" class="nav-logo">
-    <img src="piic.png" alt="Logo">
-</a>
+      <img src="piic.png" alt="Logo">
+    </a>
     <div class="nav-links">
       <a href="#about" data-en="About" data-ar="عني">About</a>
       <a href="#services" data-en="Services" data-ar="الخدمات">Services</a>
@@ -975,23 +952,20 @@ body.ar-mode div {
     </div>
   </nav>
 
-  <!-- ─── HERO ─── -->
   <section id="hero">
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-container">
       <div class="hero-content">
-        <div class="hero-badge">
-          <span class="dot"></span>
-          <span data-en="Available for Freelance Projects" data-ar="متاح للعمل الحر">Available for Freelance Projects</span>
+       
+        <div class="typewriter-wrap">
+          <span id="typed-text"></span><span class="typed-cursor"></span>
         </div>
         <h1 class="hero-title">
           <span data-en="Hi, I'm" data-ar="مرحباً، أنا">Hi, I'm</span>
-          <span class="name">Akal Abdelhak Amine</span>
+          
+          <span class="name floating-name"> Abdelhak Amine</span>
         </h1>
-        <p class="hero-subtitle">
-          <span data-en="AI Engineering Student • Freelance Web Developer" data-ar="طالب هندسة ذكاء اصطناعي • مطور ويب مستقل">AI Engineering Student • Freelance Web Developer</span>
-        </p>
         <p class="hero-description" data-en="I craft modern, high-performance web applications with clean architecture and exceptional user experiences. Passionate about turning ideas into production-ready digital products." data-ar="أبني تطبيقات ويب عصرية وعالية الأداء بهندسة نظيفة وتجارب مستخدم استثنائية. شغوف بتحويل الأفكار إلى منتجات رقمية جاهزة للإنتاج.">
           I craft modern, high-performance web applications with clean architecture and exceptional user experiences. Passionate about turning ideas into production-ready digital products.
         </p>
@@ -1016,12 +990,12 @@ body.ar-mode div {
         </div>
 
         <div class="hero-actions">
-          <a href="#projects" class="btn-primary">
+          <a href="#projects" class="btn-primary" id="projectsBtn">
             <span data-en="View My Work" data-ar="شاهد أعمالي">View My Work</span> →
           </a>
-          <a href="Akal_Abdelhak_Amine_CV.pdf" download class="btn-outline" id="downloadCvBtn">
-            <span data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</span> 📄
-          </a>
+        <a href="#" class="btn-outline" id="downloadCvBtn" onclick="downloadCV(event)">
+    <span data-en="Download CV" data-ar="تحميل السيرة الذاتية">Download CV</span> 📄
+</a>
         </div>
       </div>
       <div class="hero-visual">
@@ -1029,17 +1003,14 @@ body.ar-mode div {
           <div class="avatar-inner">
             <img src="piic.png" alt="Akal Abdelhak Amine" style="width:100%;height:100%;object-fit:cover;border-radius:50%;" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';" />
             <div class="avatar-placeholder" style="display:none;">
-              <div class="avatar-initials"></div>
+              <div class="avatar-initials">AA</div>
             </div>
           </div>
         </div>
-        
-          
       </div>
     </div>
   </section>
 
-  <!-- ─── ABOUT ─── -->
   <section id="about">
     <div class="section">
       <div class="section-header reveal">
@@ -1057,9 +1028,6 @@ body.ar-mode div {
           <h3 data-en="Building Digital Experiences That Matter" data-ar="بناء تجارب رقمية ذات معنى">Building Digital Experiences That Matter</h3>
           <p data-en="I'm Akal Abdelhak Amine, a Freelance Web Developer and AI Engineering Student based in Algeria. I craft scalable web applications from concept to deployment, focusing on clean code, performance, and user-centric design." data-ar="أنا عقال عبد الحق أمين، مطور ويب مستقل وطالب هندسة ذكاء اصطناعي مقيم في الجزائر. أبني تطبيقات ويب قابلة للتوسع من الفكرة إلى النشر، مع التركيز على الكود النظيف والأداء والتصميم المحوري للمستخدم.">
             I'm Akal Abdelhak Amine, a Freelance Web Developer and AI Engineering Student based in Algeria. I craft scalable web applications from concept to deployment, focusing on clean code, performance, and user-centric design.
-          </p>
-          <p data-en="I specialize in building both front-end interfaces and back-end systems, always focusing on clean code, performance, and user-centric design. I thrive on solving complex problems with elegant solutions." data-ar="أتخصص في بناء واجهات المستخدم الأمامية وأنظمة الخلفية، مع التركيز دائماً على الكود النظيف والأداء والتصميم المحوري للمستخدم.">
-            I specialize in building both front-end interfaces and back-end systems, always focusing on clean code, performance, and user-centric design. I thrive on solving complex problems with elegant solutions.
           </p>
           <div class="about-info-grid">
             <div class="info-item">
@@ -1084,22 +1052,22 @@ body.ar-mode div {
           <div class="about-card">
             <div class="card-icon">🎯</div>
             <h4 data-en="My Approach" data-ar="منهجيتي">My Approach</h4>
-            <p data-en="I believe great software is built at the intersection of technical excellence and deep empathy for users. Every line of code should serve a clear purpose." data-ar="أؤمن بأن البرمجيات الرائعة تُبنى عند تقاطع التميز التقني والتعاطف العميق مع المستخدمين. كل سطر كود يجب أن يخدم هدفاً واضحاً.">
-              I believe great software is built at the intersection of technical excellence and deep empathy for users. Every line of code should serve a clear purpose.
+            <p data-en="I believe great software is built at the intersection of technical excellence and deep empathy for users." data-ar="أؤمن بأن البرمجيات الرائعة تُبنى عند تقاطع التميز التقني والتعاطف العميق مع المستخدمين.">
+              I believe great software is built at the intersection of technical excellence and deep empathy for users.
             </p>
           </div>
           <div class="about-card">
             <div class="card-icon">🚀</div>
             <h4 data-en="What I Do" data-ar="ما أقوم به">What I Do</h4>
-            <p data-en="From pixel-perfect frontends to robust REST APIs and databases, I handle the full development lifecycle — planning, development, testing, and deployment." data-ar="من الواجهات الدقيقة بالبكسل إلى واجهات برمجة التطبيقات القوية وقواعد البيانات، أتعامل مع دورة التطوير الكاملة.">
-              From pixel-perfect frontends to robust REST APIs and databases, I handle the full development lifecycle — planning, development, testing, and deployment.
+            <p data-en="From pixel-perfect frontends to robust REST APIs and databases, I handle the full development lifecycle." data-ar="من الواجهات الدقيقة بالبكسل إلى واجهات برمجة التطبيقات القوية وقواعد البيانات، أتعامل مع دورة التطوير الكاملة.">
+              From pixel-perfect frontends to robust REST APIs and databases, I handle the full development lifecycle.
             </p>
           </div>
           <div class="about-card">
             <div class="card-icon">💡</div>
             <h4 data-en="My Values" data-ar="قيمي">My Values</h4>
-            <p data-en="Clean code, continuous learning, and delivering on time. I don't just write code — I build solutions that create real value for businesses and their users." data-ar="كود نظيف، التعلم المستمر، والتسليم في الوقت المحدد. لا أكتب الكود فقط — أبني حلولاً تخلق قيمة حقيقية.">
-              Clean code, continuous learning, and delivering on time. I don't just write code — I build solutions that create real value for businesses and their users.
+            <p data-en="Clean code, continuous learning, and delivering on time. I build solutions that create real value." data-ar="كود نظيف، التعلم المستمر، والتسليم في الوقت المحدد. أبني حلولاً تخلق قيمة حقيقية.">
+              Clean code, continuous learning, and delivering on time. I build solutions that create real value.
             </p>
           </div>
         </div>
@@ -1108,7 +1076,6 @@ body.ar-mode div {
   </section>
   <div class="section-divider"></div>
 
-  <!-- ─── SKILLS ─── -->
   <section id="skills">
     <div class="section">
       <div class="section-header reveal">
@@ -1121,7 +1088,7 @@ body.ar-mode div {
         <p class="section-subtitle" data-en="Technologies and tools I work with daily to deliver world-class products." data-ar="التقنيات والأدوات التي أعمل بها يومياً لتسليم منتجات عالمية.">Technologies and tools I work with daily to deliver world-class products.</p>
       </div>
       <div class="skills-grid">
-        <div class="skill-category reveal">
+        <div class="skill-category reveal" data-tilt>
           <div class="skill-cat-icon">🌐</div>
           <h3 data-en="Web Development" data-ar="تطوير الويب">Web Development</h3>
           <div class="skill-item"><span class="skill-name">HTML / CSS</span><span class="skill-pct">95%</span></div>
@@ -1133,7 +1100,7 @@ body.ar-mode div {
           <div class="skill-item"><span class="skill-name">SQL</span><span class="skill-pct">88%</span></div>
           <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
         </div>
-        <div class="skill-category reveal" style="animation-delay:0.1s">
+        <div class="skill-category reveal" style="animation-delay:0.1s" data-tilt>
           <div class="skill-cat-icon">⚛️</div>
           <h3 data-en="Frontend Frameworks" data-ar="أطر الواجهة الأمامية">Frontend Frameworks</h3>
           <div class="skill-item"><span class="skill-name">React.js</span><span class="skill-pct">92%</span></div>
@@ -1145,7 +1112,7 @@ body.ar-mode div {
           <div class="skill-item"><span class="skill-name">REST APIs</span><span class="skill-pct">90%</span></div>
           <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
         </div>
-        <div class="skill-category reveal" style="animation-delay:0.2s">
+        <div class="skill-category reveal" style="animation-delay:0.2s" data-tilt>
           <div class="skill-cat-icon">🤖</div>
           <h3 data-en="AI & Data" data-ar="الذكاء الاصطناعي والبيانات">AI & Data</h3>
           <div class="skill-item"><span class="skill-name">Python</span><span class="skill-pct">85%</span></div>
@@ -1162,7 +1129,6 @@ body.ar-mode div {
   </section>
   <div class="section-divider"></div>
 
-  <!-- ─── SERVICES ─── -->
   <section id="services">
     <div class="section">
       <div class="section-header reveal">
@@ -1178,34 +1144,23 @@ body.ar-mode div {
         <div class="skill-category reveal" style="text-align:center">
           <div class="skill-cat-icon">🤖</div>
           <h3 data-en="AI Solutions" data-ar="حلول الذكاء الاصطناعي">AI Solutions</h3>
-          <p style="font-size:0.88rem;color:var(--text-3);line-height:1.7;margin-top:12px" data-en="Chatbots, AI Assistants, Document Analysis, Recommendation Systems, and Automation powered by the latest LLMs." data-ar="روبوتات المحادثة، المساعدون الذكيون، تحليل المستندات، أنظمة التوصيات، والأتمتة بأحدث نماذج اللغة.">Chatbots · AI Assistants · Document Analysis · Recommendation Systems</p>
+          <p style="font-size:0.88rem;color:var(--text-3);line-height:1.7;margin-top:12px" data-en="Chatbots, AI Assistants, Document Analysis, Recommendation Systems" data-ar="روبوتات المحادثة، المساعدون الذكيون، تحليل المستندات، أنظمة التوصيات">Chatbots · AI Assistants · Document Analysis · Recommendation Systems</p>
         </div>
         <div class="skill-category reveal" style="text-align:center;animation-delay:0.1s">
           <div class="skill-cat-icon">🌐</div>
           <h3 data-en="Website Development" data-ar="تطوير المواقع">Website Development</h3>
-          <p style="font-size:0.88rem;color:var(--text-3);line-height:1.7;margin-top:12px" data-en="Modern, fast, and responsive websites built with React, Next.js, and Vue.js — from landing pages to complex web apps." data-ar="مواقع ويب عصرية وسريعة ومتجاوبة مبنية بـ React وNext.js وVue.js — من صفحات الهبوط إلى تطبيقات الويب المعقدة.">React · Next.js · Vue.js · Landing Pages · Web Apps</p>
+          <p style="font-size:0.88rem;color:var(--text-3);line-height:1.7;margin-top:12px" data-en="Modern, fast, and responsive websites built with React, Next.js, and Vue.js" data-ar="مواقع ويب عصرية وسريعة ومتجاوبة مبنية بـ React وNext.js وVue.js">React · Next.js · Vue.js · Landing Pages · Web Apps</p>
         </div>
         <div class="skill-category reveal" style="text-align:center;animation-delay:0.2s">
           <div class="skill-cat-icon">🛒</div>
           <h3 data-en="E-Commerce Stores" data-ar="متاجر التجارة الإلكترونية">E-Commerce Stores</h3>
-          <p style="font-size:0.88rem;color:var(--text-3);line-height:1.7;margin-top:12px" data-en="Full-featured online stores with payment gateway integration, inventory management, and admin dashboards." data-ar="متاجر إلكترونية متكاملة مع بوابات الدفع وإدارة المخزون ولوحات التحكم.">Payment Gateways · Inventory · Admin Dashboard</p>
-        </div>
-        <div class="skill-category reveal" style="text-align:center;animation-delay:0.1s">
-          <div class="skill-cat-icon">⚙️</div>
-          <h3 data-en="API Development" data-ar="تطوير واجهات البرمجة">API Development</h3>
-          <p style="font-size:0.88rem;color:var(--text-3);line-height:1.7;margin-top:12px" data-en="Scalable REST & GraphQL APIs, third-party integrations, and microservices architectures built for production." data-ar="واجهات برمجة REST وGraphQL قابلة للتوسع، وتكاملات الأطراف الثالثة، وهندسة الخدمات المصغرة للإنتاج.">REST · GraphQL · Microservices · Integrations</p>
-        </div>
-        <div class="skill-category reveal" style="text-align:center;animation-delay:0.2s">
-          <div class="skill-cat-icon">🎨</div>
-          <h3 data-en="UI/UX Implementation" data-ar="تنفيذ واجهات المستخدم">UI/UX Implementation</h3>
-          <p style="font-size:0.88rem;color:var(--text-3);line-height:1.7;margin-top:12px" data-en="Pixel-perfect, responsive UI implementation from Figma or your design — with smooth animations and great UX." data-ar="تنفيذ واجهات مستخدم دقيقة ومتجاوبة من Figma أو تصميمك — مع حركات سلسة وتجربة مستخدم رائعة.">Figma to Code · Responsive · Animations</p>
+          <p style="font-size:0.88rem;color:var(--text-3);line-height:1.7;margin-top:12px" data-en="Full-featured online stores with payment gateway integration" data-ar="متاجر إلكترونية متكاملة مع بوابات الدفع">Payment Gateways · Inventory · Admin Dashboard</p>
         </div>
       </div>
     </div>
   </section>
   <div class="section-divider"></div>
 
-  <!-- ─── PROJECTS ─── -->
   <section id="projects">
     <div class="section">
       <div class="section-header reveal">
@@ -1218,150 +1173,63 @@ body.ar-mode div {
         <p class="section-subtitle" data-en="A selection of my best work, each crafted with care and technical precision." data-ar="مجموعة من أفضل أعمالي، كلٌّ منها صُنع بعناية ودقة تقنية.">A selection of my best work, each crafted with care and technical precision.</p>
       </div>
       <div class="projects-grid">
-        <!-- Project 1 -->
-        <div class="project-card reveal">
-          <div class="project-thumb">
-            <img src="https://placehold.co/600x400/1a56db/white?text=ShopFlow+E-Commerce" alt="ShopFlow E-Commerce Platform">
-            <span class="project-type" data-en="E-Commerce" data-ar="تجارة إلكترونية">E-Commerce</span>
-            <div class="thumb-overlay">
-              <a href="#" class="thumb-btn">👁</a>
-              <a href="#" class="thumb-btn">🔗</a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-title" data-en="ShopFlow — E-Commerce Platform" data-ar="ShopFlow — منصة تجارة إلكترونية">ShopFlow — E-Commerce Platform</div>
-            <p class="project-desc" data-en="A full-featured e-commerce platform with real-time inventory, payment gateway integration, admin dashboard, and mobile-first design." data-ar="منصة تجارة إلكترونية متكاملة مع مخزون في الوقت الفعلي وتكامل بوابة الدفع ولوحة تحكم المشرف وتصميم يراعي الجوال أولاً.">
-              A full-featured e-commerce platform with real-time inventory, payment gateway integration, admin dashboard, and mobile-first design.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">MongoDB</span>
-              <span class="project-tag">Stripe</span>
-            </div>
-          </div>
-        </div>
-        <!-- Project 2 -->
-        <div class="project-card reveal" style="animation-delay:0.1s">
-          <div class="project-thumb">
-            <img src="https://placehold.co/600x400/06b6d4/white?text=DataViz+Pro+Analytics" alt="DataViz Pro Analytics Dashboard">
-            <span class="project-type" data-en="SaaS Dashboard" data-ar="لوحة تحكم SaaS">SaaS Dashboard</span>
-            <div class="thumb-overlay">
-              <a href="#" class="thumb-btn">👁</a>
-              <a href="#" class="thumb-btn">🔗</a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-title" data-en="DataViz Pro — Analytics Dashboard" data-ar="DataViz Pro — لوحة تحليلات">DataViz Pro — Analytics Dashboard</div>
-            <p class="project-desc" data-en="Real-time analytics dashboard with dynamic charts, user management, role-based access control, and CSV export functionality." data-ar="لوحة تحليلات في الوقت الفعلي مع مخططات ديناميكية وإدارة المستخدمين والتحكم في الوصول وتصدير CSV.">
-              Real-time analytics dashboard with dynamic charts, user management, role-based access control, and CSV export functionality.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Vue.js</span>
-              <span class="project-tag">Laravel</span>
-              <span class="project-tag">Chart.js</span>
-              <span class="project-tag">MySQL</span>
-            </div>
-          </div>
-        </div>
-        <!-- Project 3 -->
-        <div class="project-card reveal" style="animation-delay:0.2s">
-          <div class="project-thumb">
-            <img src="https://placehold.co/600x400/818cf8/white?text=ChatFlow+Messaging" alt="ChatFlow Messaging Platform">
-            <span class="project-type" data-en="Real-time App" data-ar="تطبيق فوري">Real-time App</span>
-            <div class="thumb-overlay">
-              <a href="#" class="thumb-btn">👁</a>
-              <a href="#" class="thumb-btn">🔗</a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-title" data-en="ChatFlow — Messaging Platform" data-ar="ChatFlow — منصة مراسلة">ChatFlow — Messaging Platform</div>
-            <p class="project-desc" data-en="Real-time chat application with WebSocket support, end-to-end encryption, file sharing, and group channels functionality." data-ar="تطبيق دردشة في الوقت الفعلي مع دعم WebSocket والتشفير من طرف إلى طرف ومشاركة الملفات وقنوات المجموعات.">
-              Real-time chat application with WebSocket support, end-to-end encryption, file sharing, and group channels functionality.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Socket.io</span>
-              <span class="project-tag">Node.js</span>
-              <span class="project-tag">Redis</span>
-            </div>
-          </div>
-        </div>
-        <!-- Project 4 -->
-        <div class="project-card reveal" style="animation-delay:0.1s">
-          <div class="project-thumb">
-            <img src="https://placehold.co/600x400/10b981/white?text=MediBook+Clinic" alt="MediBook Clinic Management">
-            <span class="project-type" data-en="Healthcare" data-ar="رعاية صحية">Healthcare</span>
-            <div class="thumb-overlay">
-              <a href="#" class="thumb-btn">👁</a>
-              <a href="#" class="thumb-btn">🔗</a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-title" data-en="MediBook — Clinic Management" data-ar="MediBook — إدارة عيادات">MediBook — Clinic Management</div>
-            <p class="project-desc" data-en="Complete clinic management system with appointment scheduling, patient records, billing, and notification system for doctors and patients." data-ar="نظام إدارة عيادات متكامل مع جدولة المواعيد وسجلات المرضى والفوترة ونظام الإشعارات.">
-              Complete clinic management system with appointment scheduling, patient records, billing, and notification system for doctors and patients.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Next.js</span>
-              <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">Prisma</span>
-              <span class="project-tag">Twilio</span>
-            </div>
-          </div>
-        </div>
-        <!-- Project 5 -->
-        <div class="project-card reveal" style="animation-delay:0.2s">
-          <div class="project-thumb">
-            <img src="https://placehold.co/600x400/f59e0b/white?text=LearnHub+LMS" alt="LearnHub LMS Platform">
-            <span class="project-type" data-en="EdTech" data-ar="تعليم إلكتروني">EdTech</span>
-            <div class="thumb-overlay">
-              <a href="#" class="thumb-btn">👁</a>
-              <a href="#" class="thumb-btn">🔗</a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-title" data-en="LearnHub — LMS Platform" data-ar="LearnHub — منصة تعليم">LearnHub — LMS Platform</div>
-            <p class="project-desc" data-en="A Learning Management System with video streaming, quizzes, certificates, progress tracking, and Stripe payment for course enrollment." data-ar="نظام إدارة التعلم مع بث الفيديو والاختبارات والشهادات وتتبع التقدم ودفع Stripe للتسجيل في الدورات.">
-              A Learning Management System with video streaming, quizzes, certificates, progress tracking, and Stripe payment for course enrollment.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">React</span>
-              <span class="project-tag">Django</span>
-              <span class="project-tag">PostgreSQL</span>
-              <span class="project-tag">AWS S3</span>
-            </div>
-          </div>
-        </div>
-        <!-- Project 6 -->
-        <div class="project-card reveal" style="animation-delay:0.3s">
-          <div class="project-thumb">
-            <img src="https://placehold.co/600x400/ef4444/white?text=PropFind+Real+Estate" alt="PropFind Real Estate App">
-            <span class="project-type" data-en="Real Estate" data-ar="عقارات">Real Estate</span>
-            <div class="thumb-overlay">
-              <a href="#" class="thumb-btn">👁</a>
-              <a href="#" class="thumb-btn">🔗</a>
-            </div>
-          </div>
-          <div class="project-body">
-            <div class="project-title" data-en="PropFind — Real Estate App" data-ar="PropFind — تطبيق عقارات">PropFind — Real Estate App</div>
-            <p class="project-desc" data-en="Property listing and search platform with map integration, advanced filters, mortgage calculator, and agent management portal." data-ar="منصة قوائم ومقارنة العقارات مع تكامل الخرائط والفلاتر المتقدمة وحاسبة الرهن العقاري وبوابة إدارة الوكلاء.">
-              Property listing and search platform with map integration, advanced filters, mortgage calculator, and agent management portal.
-            </p>
-            <div class="project-tags">
-              <span class="project-tag">Vue.js</span>
-              <span class="project-tag">Laravel</span>
-              <span class="project-tag">Google Maps</span>
-              <span class="project-tag">MySQL</span>
-            </div>
-          </div>
-        </div>
+         <div class="pj-grid">
+    <!-- 01 — متجر العطور (unchanged) -->
+    <a href="https://user38747.github.io/parfumes/" target="_blank" class="pj-card hero-card reveal">
+      <div class="pj-img">
+        <img id="p1img" src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=1200&auto=format&fit=crop" alt="متجر العطور"/>
+        <div class="pj-num">01</div>
+        <div class="pj-live">● Live</div>
+        <div class="pj-img-title"><div class="pj-cat">E-Commerce · Perfume Store</div><div class="pj-name">متجر العطور</div></div>
       </div>
+      <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">متجر إلكتروني فاخر متخصص في العطور الراقية — واجهة أنيقة وتجربة تسوق استثنائية.</p><div class="pj-tags"><span class="pj-tag">HTML5</span><span class="pj-tag">CSS3</span><span class="pj-tag">JavaScript</span></div></div><div class="pj-arr">↗</div></div>
+      <div class="pj-foot">user38747.github.io/parfumes</div>
+    </a>
+
+    <!-- 02 — NOIR Shop unchanged -->
+    <a href="https://user38747.github.io/NOIR_Shop/" target="_blank" class="pj-card reveal d1">
+      <div class="pj-img"><img id="p2img" src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop" alt="NOIR Shop"/><div class="pj-num">02</div><div class="pj-live">● Live</div><div class="pj-img-title"><div class="pj-cat">E-Commerce · Accessories</div><div class="pj-name">NOIR — الاكسسوارات</div></div></div>
+      <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">متجر NOIR للاكسسوارات الفاخرة — هوية بصرية داكنة وأنيقة.</p><div class="pj-tags"><span class="pj-tag">HTML5</span><span class="pj-tag">CSS3</span><span class="pj-tag">JS</span></div></div><div class="pj-arr">↗</div></div>
+      <div class="pj-foot">github.io/NOIR_Shop</div>
+    </a>
+
+    <!-- 03 — NEW: Beauty & Elegance Store (formerly Sweets) -->
+    <a href="https://shopamine.ct.ws" target="_blank" class="pj-card reveal d2">
+      <div class="pj-img">
+        <img id="p3img" src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop" alt="Beauty & Elegance Store"/>
+        <div class="pj-num">03</div>
+        <div class="pj-live">● Live</div>
+        <div class="pj-img-title"><div class="pj-cat">Cosmetics · Beauty</div><div class="pj-name">متجر مواد التجميل والأناقة</div></div>
+      </div>
+      <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">متجر إلكتروني متخصص في مستحضرات التجميل والعناية بالبشرة — تصميم أنثوي راقٍ وتجربة تسوق فاخرة.</p><div class="pj-tags"><span class="pj-tag">PHP</span><span class="pj-tag">MySQL</span><span class="pj-tag">CSS3</span><span class="pj-tag">Elegance UI</span></div></div><div class="pj-arr">↗</div></div>
+      <div class="pj-foot">shopamine.ct.ws</div>
+    </a>
+
+    <!-- 04 — rendez_vous unchanged -->
+    <a href="https://user38747.github.io/rendez_vous/" target="_blank" class="pj-card reveal d1">
+      <div class="pj-img"><img id="p4img" src="https://images.unsplash.com/photo-1506784365847-bbad939e9501?q=80&w=800&auto=format&fit=crop" alt="نظام حجز المواعيد"/><div class="pj-num">04</div><div class="pj-live">● Live</div><div class="pj-img-title"><div class="pj-cat">Web App · Booking System</div><div class="pj-name">نظام حجز المواعيد</div></div></div>
+      <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">نظام حجز مواعيد متكامل — تقويم تفاعلي، إدارة العملاء.</p><div class="pj-tags"><span class="pj-tag">HTML5</span><span class="pj-tag">CSS3</span><span class="pj-tag">JS</span><span class="pj-tag">LocalStorage</span></div></div><div class="pj-arr">↗</div></div>
+      <div class="pj-foot">github.io/rendez_vous</div>
+    </a>
+
+    <!-- 05 — foood restaurant unchanged -->
+    <a href="https://user38747.github.io/foood/" target="_blank" class="pj-card reveal d2">
+      <div class="pj-img"><img id="p5img" src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" alt="موقع مطعم"/><div class="pj-num">05</div><div class="pj-live">● Live</div><div class="pj-img-title"><div class="pj-cat">Restaurant · Online Ordering</div><div class="pj-name">موقع مطعم مع طلب أونلاين</div></div></div>
+      <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">موقع مطعم احترافي مع قائمة طعام تفاعلية ونظام طلب أونلاين.</p><div class="pj-tags"><span class="pj-tag">HTML5</span><span class="pj-tag">CSS3</span><span class="pj-tag">JS</span><span class="pj-tag">Order</span></div></div><div class="pj-arr">↗</div></div>
+      <div class="pj-foot">github.io/foood</div>
+    </a>
+
+    <!-- 06 — Opulent Watches -->
+    <a href="#" class="pj-card reveal d3">
+      <div class="pj-img"><img id="p6img" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop" alt="Opulent Watches"/><div class="pj-num">06</div><div class="pj-live" style="animation:none;background:rgba(201,168,76,.07);color:rgba(201,168,76,.38);">◌ Soon</div><div class="pj-img-title"><div class="pj-cat">Luxury Brand · E-Commerce</div><div class="pj-name">Opulent Watches</div></div></div>
+      <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">منصة تجارة إلكترونية فاخرة لساعات راقية — هوية بصرية احترافية.</p><div class="pj-tags"><span class="pj-tag">Branding</span><span class="pj-tag">JavaScript</span><span class="pj-tag">CSS3</span></div></div><div class="pj-arr">↗</div></div>
+      <div class="pj-foot">Coming Soon</div>
+    </a>
+  </div>
     </div>
   </section>
   <div class="section-divider"></div>
 
-  <!-- ─── ACHIEVEMENTS ─── -->
   <section id="achievements" style="background: var(--surface2);">
     <div class="section">
       <div class="section-header reveal">
@@ -1399,64 +1267,6 @@ body.ar-mode div {
   </section>
   <div class="section-divider"></div>
 
-  <!-- ─── PROCESS ─── -->
-  <section id="process" style="background:linear-gradient(180deg,var(--bg) 0%,var(--surface2) 50%,var(--bg) 100%)">
-    <div class="section">
-      <div class="section-header reveal">
-        <div class="section-tag">
-          <span class="line"></span>
-          <span data-en="How I Work" data-ar="كيف أعمل">How I Work</span>
-          <span class="line"></span>
-        </div>
-        <h2 class="section-title" data-en="My <span>Process</span>" data-ar="<span>منهجيتي</span> في العمل">My <span>Process</span></h2>
-        <p class="section-subtitle" data-en="A clear, transparent workflow so you always know what's happening." data-ar="سير عمل واضح وشفاف حتى تعرف دائماً ما يحدث.">A clear, transparent workflow so you always know what's happening.</p>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:24px;position:relative" class="reveal">
-        <div style="position:absolute;top:48px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,var(--primary),var(--accent),var(--accent2));z-index:0;opacity:0.3" class="process-line"></div>
-        <div style="text-align:center;position:relative;z-index:1;padding:24px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition)" class="about-card">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px;color:white;font-weight:800">1</div>
-          <h4 data-en="Discussion" data-ar="النقاش">Discussion</h4>
-          <p style="font-size:0.82rem;color:var(--text-3);margin-top:8px" data-en="We talk about your goals, requirements, and timeline." data-ar="نتحدث عن أهدافك ومتطلباتك والجدول الزمني.">We talk about your goals, requirements, and timeline.</p>
-        </div>
-        <div style="text-align:center;position:relative;z-index:1;padding:24px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition)" class="about-card">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px;color:white;font-weight:800">2</div>
-          <h4 data-en="Planning" data-ar="التخطيط">Planning</h4>
-          <p style="font-size:0.82rem;color:var(--text-3);margin-top:8px" data-en="Architecture, design mockups, and a clear project roadmap." data-ar="الهندسة والنماذج التصميمية وخارطة طريق واضحة للمشروع.">Architecture, design mockups, and a clear project roadmap.</p>
-        </div>
-        <div style="text-align:center;position:relative;z-index:1;padding:24px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition)" class="about-card">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px;color:white;font-weight:800">3</div>
-          <h4 data-en="Development" data-ar="التطوير">Development</h4>
-          <p style="font-size:0.82rem;color:var(--text-3);margin-top:8px" data-en="Clean code, regular updates, and milestone reviews." data-ar="كود نظيف وتحديثات منتظمة ومراجعات المراحل.">Clean code, regular updates, and milestone reviews.</p>
-        </div>
-        <div style="text-align:center;position:relative;z-index:1;padding:24px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition)" class="about-card">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px;color:white;font-weight:800">4</div>
-          <h4 data-en="Testing" data-ar="الاختبار">Testing</h4>
-          <p style="font-size:0.82rem;color:var(--text-3);margin-top:8px" data-en="Thorough QA, bug fixes, and performance optimization." data-ar="ضمان جودة شامل وإصلاح الأخطاء وتحسين الأداء.">Thorough QA, bug fixes, and performance optimization.</p>
-        </div>
-        <div style="text-align:center;position:relative;z-index:1;padding:24px 16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);transition:var(--transition)" class="about-card">
-          <div style="width:64px;height:64px;border-radius:50%;background:var(--gradient);display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin:0 auto 16px;color:white;font-weight:800">5</div>
-          <h4 data-en="Delivery" data-ar="التسليم">Delivery</h4>
-          <p style="font-size:0.82rem;color:var(--text-3);margin-top:8px" data-en="Deployment, handover, and post-launch support." data-ar="النشر والتسليم والدعم بعد الإطلاق.">Deployment, handover, and post-launch support.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <div class="section-divider"></div>
-
-  <!-- ─── CTA BANNER ─── -->
-  <section style="background:var(--gradient);padding:80px 40px;text-align:center">
-    <div style="max-width:700px;margin:0 auto">
-      <h2 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;color:white;margin-bottom:16px;letter-spacing:-1px" data-en="Ready to Build Something <br>Amazing Together?" data-ar="هل أنت مستعد لبناء شيء مذهل معاً؟">Ready to Build Something <br>Amazing Together?</h2>
-      <p style="color:rgba(255,255,255,0.85);font-size:1rem;margin-bottom:36px;line-height:1.7" data-en="Whether it's a web app, AI integration, or e-commerce store — let's turn your idea into reality. I respond within 24 hours." data-ar="سواء كان تطبيق ويب أو تكامل ذكاء اصطناعي أو متجر إلكتروني — دعنا نحول فكرتك إلى واقع. أرد خلال 24 ساعة.">Whether it's a web app, AI integration, or e-commerce store — let's turn your idea into reality. I respond within 24 hours.</p>
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-        <a href="#contact" style="padding:16px 40px;border-radius:40px;background:white;color:var(--primary);font-weight:700;font-size:1rem;text-decoration:none;transition:var(--transition);box-shadow:0 8px 30px rgba(0,0,0,0.15)" data-en="🚀 Start Your Project" data-ar="🚀 ابدأ مشروعك">🚀 Start Your Project</a>
-        <a href="mailto:akalabdelhakamine38@gmail.com" style="padding:16px 40px;border-radius:40px;background:rgba(255,255,255,0.15);color:white;font-weight:700;font-size:1rem;text-decoration:none;border:2px solid rgba(255,255,255,0.4);transition:var(--transition)" data-en="📧 Send an Email" data-ar="📧 أرسل بريداً إلكترونياً">📧 Send an Email</a>
-      </div>
-    </div>
-  </section>
-  <div class="section-divider"></div>
-
-  <!-- ─── CONTACT ─── -->
   <section id="contact">
     <div class="section">
       <div class="section-header reveal">
@@ -1474,8 +1284,6 @@ body.ar-mode div {
           <p data-en="I'm available for freelance projects, full-time positions, and collaborations. Don't hesitate to reach out — I usually respond within 24 hours." data-ar="أنا متاح للمشاريع المستقلة والوظائف بدوام كامل والتعاون. لا تتردد في التواصل — عادةً ما أرد خلال 24 ساعة.">
             I'm available for freelance projects, full-time positions, and collaborations. Don't hesitate to reach out — I usually respond within 24 hours.
           </p>
-          
-          <!-- أيقونات التواصل بشكل أيقونات فقط -->
           <div class="contact-icons-row">
             <a href="mailto:akalabdelhakamine38@gmail.com" class="contact-icon-link" data-tooltip="Email" target="_blank" aria-label="Email">
               <i class="fas fa-envelope"></i>
@@ -1506,14 +1314,13 @@ body.ar-mode div {
           </div>
           <div class="form-group" style="margin-bottom:16px">
             <label data-en="Subject" data-ar="الموضوع">Subject</label>
-            <input type="text" id="formSubject" data-placeholder-en="Project Inquiry" data-placeholder-ar="استفسار عن مشروع" placeholder="Project Inquiry">
+            <input type="text" id="formSubject" placeholder="Project Inquiry">
           </div>
-          
           <div class="form-group" style="margin-bottom:24px">
             <label data-en="Your Message" data-ar="رسالتك">Your Message</label>
-            <textarea id="formMessage" data-placeholder-en="Tell me about your project..." data-placeholder-ar="أخبرني عن مشروعك..." placeholder="Tell me about your project..."></textarea>
+            <textarea id="formMessage" placeholder="Tell me about your project..."></textarea>
           </div>
-          <button class="form-submit" id="submitBtn" onclick="handleSubmit(this)">
+          <button class="form-submit" id="submitBtn">
             <span data-en="Send Message" data-ar="إرسال الرسالة">Send Message</span>
             <span>→</span>
           </button>
@@ -1522,7 +1329,6 @@ body.ar-mode div {
     </div>
   </section>
 
-  <!-- ─── FOOTER ─── -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1537,29 +1343,124 @@ body.ar-mode div {
         <a href="#skills" data-en="Skills" data-ar="المهارات">Skills</a>
         <a href="#services" data-en="Services" data-ar="الخدمات">Services</a>
         <a href="#projects" data-en="Projects" data-ar="المشاريع">Projects</a>
-        <a href="#achievements" data-en="Achievements" data-ar="الإنجازات">Achievements</a>
       </div>
       <div class="footer-col">
         <h4 data-en="Content" data-ar="المحتوى">Content</h4>
-        <a href="#process" data-en="Process" data-ar="المنهجية">Process</a>
+        <a href="#achievements" data-en="Achievements" data-ar="الإنجازات">Achievements</a>
         <a href="#contact" data-en="Contact" data-ar="التواصل">Contact</a>
       </div>
       <div class="footer-col">
         <h4 data-en="Contact" data-ar="تواصل">Contact</h4>
-        <a href="mailto:akalabdelhakamine38@gmail.com"><i class="fas fa-envelope"></i>Email</a>
-        <a href="https://wa.me/213556267319" target="_blank"><i class="fab fa-whatsapp"></i>Whatsapp</a>
-        <a href="https://t.me/+213553704235" target="_blank"><i class="fab fa-telegram"></i>Telegram</a>
+        <a href="mailto:akalabdelhakamine38@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+        <a href="https://wa.me/213556267319" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://t.me/+213553704235" target="_blank"><i class="fab fa-telegram"></i> Telegram</a>
         <a href="tel:+213556267319"><i class="fas fa-phone"></i> Phone</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <span data-en="©  Akal Abdelhak Amine" data-ar="©   Akal Abdelhak Amine">©  Akal Abdelhak Amine.</span>
-      
+      <span data-en="© 2025 Akal Abdelhak Amine" data-ar="© 2025 عقال عبد الحق أمين">© 2025 Akal Abdelhak Amine</span>
     </div>
   </footer>
 
   <script>
-    /* ─── LANGUAGE TOGGLE ─── */
+    // ========== TYPEWRITER EFFECT ==========
+    const typedWords = [
+      "AI Engineering Student",
+      "Freelance Web Developer", 
+      "Python • Java • PHP • SQL",
+      "ML & Modern Web",
+      "Available for Work"
+    ];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typedTextEl = document.getElementById("typed-text");
+    
+    function typeEffect() {
+      const currentWord = typedWords[wordIndex];
+      if (isDeleting) {
+        typedTextEl.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typedTextEl.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+      }
+      
+      if (!isDeleting && charIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(typeEffect, 2000);
+        return;
+      }
+      
+      if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % typedWords.length;
+        setTimeout(typeEffect, 300);
+        return;
+      }
+      
+      const speed = isDeleting ? 60 : 100;
+      setTimeout(typeEffect, speed);
+    }
+    
+    setTimeout(typeEffect, 500);
+
+    // ========== RIPPL E EFFECT ==========
+    function createRipple(event, element) {
+      const rect = element.getBoundingClientRect();
+      const size = Math.max(rect.width, rect.height);
+      const x = event.clientX - rect.left - size / 2;
+      const y = event.clientY - rect.top - size / 2;
+      const ripple = document.createElement("span");
+      ripple.className = "ripple";
+      ripple.style.width = ripple.style.height = size + "px";
+      ripple.style.left = x + "px";
+      ripple.style.top = y + "px";
+      element.style.position = "relative";
+      element.style.overflow = "hidden";
+      element.appendChild(ripple);
+      ripple.addEventListener("animationend", () => ripple.remove());
+    }
+
+    // ========== MAGNETIC EFFECT ==========
+    function applyMagneticEffect(element) {
+      element.addEventListener("mousemove", (e) => {
+        const rect = element.getBoundingClientRect();
+        const x = (e.clientX - rect.left - rect.width / 2) * 0.2;
+        const y = (e.clientY - rect.top - rect.height / 2) * 0.2;
+        element.style.transform = `translate(${x}px, ${y}px) translateY(-3px)`;
+      });
+      element.addEventListener("mouseleave", () => {
+        element.style.transform = "translate(0px, 0px)";
+      });
+    }
+
+    // ========== 3D TILT EFFECT FOR SKILL CARDS ==========
+    function applyTiltEffect(card) {
+      card.addEventListener("mousemove", (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const tiltX = y * 8;
+        const tiltY = x * -8;
+        card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateY(-5px)`;
+      });
+      card.addEventListener("mouseleave", () => {
+        card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)";
+      });
+    }
+
+    // ========== APPLY EFFECTS ==========
+    document.querySelectorAll(".btn-primary, .btn-outline, .form-submit, .nav-cta").forEach(btn => {
+      btn.addEventListener("click", (e) => createRipple(e, btn));
+      applyMagneticEffect(btn);
+    });
+    
+    document.querySelectorAll(".skill-category").forEach(card => {
+      applyTiltEffect(card);
+    });
+
+    // ========== LANGUAGE TOGGLE ==========
     let currentLang = 'en';
 
     function setLang(lang) {
@@ -1571,35 +1472,19 @@ body.ar-mode div {
       document.getElementById('btnEn').classList.toggle('active', !isAr);
       document.getElementById('btnAr').classList.toggle('active', isAr);
 
-      // Update all data-en / data-ar elements
       document.querySelectorAll('[data-en]').forEach(el => {
         const text = el.getAttribute(`data-${lang}`);
         if (text) {
           if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
             el.placeholder = text;
-          } else if (el.querySelector('span[data-en]') === null && el.children.length === 0) {
-            el.textContent = text;
-          } else if (el.innerHTML.includes('<span')) {
-            el.innerHTML = text;
-          } else {
+          } else if (el.children.length === 0 || el.querySelector('span[data-en]') === null) {
             el.textContent = text;
           }
         }
       });
-
-      // Update placeholders with data-placeholder
-      document.querySelectorAll(`[data-placeholder-${lang}]`).forEach(el => {
-        el.placeholder = el.getAttribute(`data-placeholder-${lang}`);
-      });
-
-      // Update select options
-      document.querySelectorAll('select option[data-en]').forEach(opt => {
-        const text = opt.getAttribute(`data-${lang}`);
-        if (text) opt.textContent = text;
-      });
     }
 
-    /* ─── NAVBAR SCROLL ─── */
+    // ========== NAVBAR SCROLL ==========
     const navbar = document.getElementById('navbar');
     const progressBar = document.getElementById('progress-bar');
     const backTop = document.getElementById('back-top');
@@ -1612,7 +1497,6 @@ body.ar-mode div {
       progressBar.style.width = (scrolled / total * 100) + '%';
       backTop.classList.toggle('show', scrolled > 400);
 
-      // Active nav link
       document.querySelectorAll('.nav-links a').forEach(a => {
         const sec = document.querySelector(a.getAttribute('href'));
         if (sec) {
@@ -1623,14 +1507,14 @@ body.ar-mode div {
       });
     });
 
-    /* ─── REVEAL ON SCROLL ─── */
+    // ========== REVEAL ON SCROLL + SKILL BARS ==========
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          // Animate skill bars
           entry.target.querySelectorAll('.skill-fill').forEach(bar => {
-            bar.style.width = bar.dataset.width + '%';
+            const width = bar.dataset.width;
+            if (width) bar.style.width = width + '%';
           });
         }
       });
@@ -1638,11 +1522,17 @@ body.ar-mode div {
 
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    /* ─── MOBILE MENU ─── */
-    function openMobile() { document.getElementById('mobileMenu').classList.add('open'); document.body.style.overflow = 'hidden'; }
-    function closeMobile() { document.getElementById('mobileMenu').classList.remove('open'); document.body.style.overflow = ''; }
+    // ========== MOBILE MENU ==========
+    function openMobile() { 
+      document.getElementById('mobileMenu').classList.add('open'); 
+      document.body.style.overflow = 'hidden'; 
+    }
+    function closeMobile() { 
+      document.getElementById('mobileMenu').classList.remove('open'); 
+      document.body.style.overflow = ''; 
+    }
 
-    /* ─── FORM SUBMIT TO TELEGRAM ─── */
+    // ========== TELEGRAM FORM SUBMIT ==========
     async function handleSubmit(btn) {
       const name = document.getElementById('formName')?.value.trim();
       const email = document.getElementById('formEmail')?.value.trim();
@@ -1655,14 +1545,12 @@ body.ar-mode div {
       }
 
       const originalHTML = btn.innerHTML;
-      btn.innerHTML = '<span>⏳</span><span data-en="Sending..." data-ar="جارٍ الإرسال...">Sending...</span>';
+      btn.innerHTML = '<span>⏳</span><span>Sending...</span>';
       btn.disabled = true;
 
-      // Telegram Bot API details
-      const BOT_TOKEN = '8881871914:AAFAtlqKT12piBKZXfFHLBHqxrOPImUmO58'; // ⚠️ استبدل هذا بالتوكن الخاص بالبوت
-      const CHAT_ID = '6245150338'; // رقم معرف الدردشة (تأكد من إضافة 213 أو التنسيق الصحيح للمعرف إذا كان مستخدم وليس مجموعة)
+      const BOT_TOKEN = '8881871914:AAFAtlqKT12piBKZXfFHLBHqxrOPImUmO58';
+      const CHAT_ID = '6245150338';
 
-      // Format message text
       const text = `📩 *New Contact Form Message*\n\n👤 *Name:* ${name}\n📧 *Email:* ${email}\n📝 *Subject:* ${subject}\n💬 *Message:* ${message}`;
 
       try {
@@ -1670,7 +1558,7 @@ body.ar-mode div {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            chat_id: 6245150338,
+            chat_id: CHAT_ID,
             text: text,
             parse_mode: 'Markdown'
           })
@@ -1679,9 +1567,8 @@ body.ar-mode div {
         const result = await response.json();
 
         if (result.ok) {
-          btn.innerHTML = '<span>✅</span><span>' + (currentLang === 'ar' ? 'تم الإرسال بنجاح!' : 'Sent Successfully!') + '</span>';
+          btn.innerHTML = '<span>✅</span><span>Sent Successfully!</span>';
           btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-          // Clear form
           document.getElementById('formName').value = '';
           document.getElementById('formEmail').value = '';
           document.getElementById('formSubject').value = '';
@@ -1691,14 +1578,13 @@ body.ar-mode div {
         }
       } catch (error) {
         console.error('Telegram send error:', error);
-        alert(currentLang === 'ar' ? 'فشل في إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.' : 'Failed to send message. Please try again later or contact directly via the provided links.');
+        alert(currentLang === 'ar' ? 'فشل في إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.' : 'Failed to send message. Please try again later.');
         btn.innerHTML = originalHTML;
         btn.disabled = false;
         btn.style.background = '';
         return;
       }
 
-      // Reset button after success
       setTimeout(() => {
         btn.innerHTML = originalHTML;
         btn.disabled = false;
@@ -1706,7 +1592,12 @@ body.ar-mode div {
       }, 3000);
     }
 
-    /* ─── SMOOTH SCROLL OFFSET ─── */
+    document.getElementById('submitBtn').addEventListener('click', function(e) {
+      e.preventDefault();
+      handleSubmit(this);
+    });
+
+    // ========== SMOOTH SCROLL ==========
     document.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', e => {
         const target = document.querySelector(link.getAttribute('href'));
@@ -1717,10 +1608,184 @@ body.ar-mode div {
       });
     });
 
-    /* ─── INIT ─── */
+    // ========== INIT ==========
     document.querySelectorAll('.reveal').forEach((el, i) => {
       el.style.transitionDelay = (i % 3) * 0.08 + 's';
     });
+    // دالة تحميل السيرة الذاتية - تنشئ PDF تلقائياً
+function downloadCV(event) {
+    event.preventDefault();
+    
+    const cvContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Akal Abdelhak Amine - CV</title>
+            <style>
+                * { margin: 0; padding: 0; box-sizing: border-box; }
+                body {
+                    font-family: 'Segoe UI', Arial, sans-serif;
+                    padding: 50px;
+                    max-width: 900px;
+                    margin: 0 auto;
+                    background: #f8faff;
+                    color: #0f172a;
+                }
+                .cv-container {
+                    background: white;
+                    border-radius: 20px;
+                    padding: 40px;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+                }
+                h1 {
+                    font-size: 2.5rem;
+                    background: linear-gradient(135deg, #1a56db, #06b6d4, #818cf8);
+                    -webkit-background-clip: text;
+                    -webkit-text-fill-color: transparent;
+                    background-clip: text;
+                    margin-bottom: 10px;
+                }
+                .subtitle {
+                    font-size: 1.1rem;
+                    color: #334155;
+                    margin-bottom: 20px;
+                    border-bottom: 2px solid #1a56db;
+                    padding-bottom: 15px;
+                }
+                .contact-info {
+                    display: flex;
+                    gap: 20px;
+                    flex-wrap: wrap;
+                    margin-bottom: 30px;
+                    padding: 15px;
+                    background: #f1f5ff;
+                    border-radius: 12px;
+                }
+                .contact-info span {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    font-size: 0.85rem;
+                    color: #334155;
+                }
+                .section {
+                    margin-bottom: 25px;
+                }
+                .section h2 {
+                    color: #1a56db;
+                    font-size: 1.3rem;
+                    border-left: 4px solid #06b6d4;
+                    padding-left: 12px;
+                    margin-bottom: 15px;
+                }
+                .skills-list {
+                    display: flex;
+                    flex-wrap: wrap;
+                    gap: 10px;
+                    list-style: none;
+                }
+                .skills-list li {
+                    background: linear-gradient(135deg, #dbeafe, #e0f2fe);
+                    padding: 5px 15px;
+                    border-radius: 20px;
+                    font-size: 0.85rem;
+                }
+                .project-item {
+                    margin-bottom: 15px;
+                }
+                .project-title {
+                    font-weight: 700;
+                    color: #1e3a8a;
+                }
+                .achievement-item {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+                    margin-bottom: 12px;
+                }
+                hr {
+                    margin: 20px 0;
+                    border-color: #dce5ff;
+                }
+                .achievement-item:before {
+                    content: "✓";
+                    color: #10b981;
+                    font-weight: bold;
+                }
+            </style>
+        </head>
+        <body>
+            <div class="cv-container">
+                <h1>Akal Abdelhak Amine</h1>
+                <div class="subtitle">AI Engineering Student • Freelance Web Developer</div>
+                
+                <div class="contact-info">
+                    <span>📧 akalabdelhakamine38@gmail.com</span>
+                    <span>📞 +213 556 267 319</span>
+                    <span>📍 Algeria</span>
+                </div>
+                
+                <div class="section">
+                    <h2>🎯 Professional Profile</h2>
+                    <p>AI Engineering Student and Freelance Web Developer based in Algeria. I build modern web apps, AI integrations, chatbots, and automation systems.</p>
+                </div>
+                
+                <div class="section">
+                    <h2>🛠 Technical Skills</h2>
+                    <ul class="skills-list">
+                        <li>HTML/CSS (95%)</li>
+                        <li>JavaScript (90%)</li>
+                        <li>React.js (92%)</li>
+                        <li>Vue.js (80%)</li>
+                        <li>Node.js (88%)</li>
+                        <li>PHP (85%)</li>
+                        <li>Python (85%)</li>
+                        <li>SQL (88%)</li>
+                        <li>Git/GitHub (92%)</li>
+                    </ul>
+                </div>
+                
+                <div class="section">
+                    <h2>💼 Featured Projects</h2>
+                    <div class="project-item">
+                        <div class="project-title">ShopFlow — E-Commerce Platform</div>
+                        <p>Full-featured e-commerce platform with real-time inventory, payment gateway integration.</p>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-title">DataViz Pro — Analytics Dashboard</div>
+                        <p>Real-time analytics dashboard with dynamic charts and user management.</p>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-title">ChatFlow — Messaging Platform</div>
+                        <p>Real-time chat application with WebSocket support.</p>
+                    </div>
+                </div>
+                
+                <div class="section">
+                    <h2>🏆 Achievements</h2>
+                    <div class="achievement-item">15+ Websites Built</div>
+                    <div class="achievement-item">5+ AI Projects Deployed</div>
+                    <div class="achievement-item">Available for Freelance Work</div>
+                </div>
+                
+                <hr>
+                <p style="text-align: center; color: #64748b; font-size: 0.8rem;">© 2025 Akal Abdelhak Amine</p>
+            </div>
+        </body>
+        </html>
+    `;
+    
+    const blob = new Blob([cvContent], { type: 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Akal_Abdelhak_Amine_CV.pdf';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+}
   </script>
 </body>
 </html>
