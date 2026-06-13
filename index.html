@@ -370,30 +370,75 @@
       object-fit: cover;
     }
 
-    /* Projects Grid Styles */
-    .pj-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    /* ========== NEW HORIZONTAL PROJECTS SCROLL ========== */
+    .projects-wrapper {
+      position: relative;
+      width: 100%;
     }
-    
+
+    .projects-scroll {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      gap: 24px;
+      padding: 20px 60px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .projects-scroll::-webkit-scrollbar {
+      display: none;
+    }
+
+    .projects-scroll:active {
+      cursor: grabbing;
+    }
+
     .pj-card {
+      flex: 0 0 auto;
+      width: 380px;
+      max-width: 85vw;
+      scroll-snap-align: center;
       background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 20px;
       overflow: hidden;
       text-decoration: none;
       color: inherit;
-      transition: all 0.3s ease;
       display: flex;
       flex-direction: column;
+      box-shadow: var(--shadow);
+      animation: fadeInUpCard 0.6s ease-out backwards;
     }
+
+    .pj-card:nth-child(1) { animation-delay: 0.1s; }
+    .pj-card:nth-child(2) { animation-delay: 0.2s; }
+    .pj-card:nth-child(3) { animation-delay: 0.3s; }
+    .pj-card:nth-child(4) { animation-delay: 0.4s; }
+    .pj-card:nth-child(5) { animation-delay: 0.5s; }
+    .pj-card:nth-child(6) { animation-delay: 0.6s; }
+
+    @keyframes fadeInUpCard {
+      from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
     .pj-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
       box-shadow: var(--shadow-xl);
-      border-color: var(--primary);
+      border-color: var(--primary-light);
     }
-    
+
     .pj-img {
       position: relative;
       height: 220px;
@@ -403,10 +448,10 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .pj-card:hover .pj-img img {
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
     
     .pj-num {
@@ -420,43 +465,54 @@
       font-size: 0.7rem;
       font-weight: 600;
       z-index: 2;
+      backdrop-filter: blur(4px);
     }
     .pj-live {
       position: absolute;
       top: 12px;
       right: 12px;
-      background: rgba(16,185,129,0.9);
+      background: rgba(16,185,129,0.95);
       color: white;
       padding: 4px 10px;
       border-radius: 20px;
       font-size: 0.65rem;
       font-weight: 600;
       z-index: 2;
+      backdrop-filter: blur(4px);
+      animation: pulse-live 2s ease-in-out infinite;
     }
+
+    @keyframes pulse-live {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+
     .pj-img-title {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
-      padding: 30px 16px 16px;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3), transparent);
+      padding: 40px 16px 16px;
       z-index: 2;
     }
     .pj-cat {
       font-size: 0.7rem;
       color: var(--accent);
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
+      font-weight: 600;
+      margin-bottom: 4px;
     }
     .pj-name {
       font-size: 1.2rem;
       font-weight: 700;
       color: white;
-      margin-top: 4px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
     }
     
     .pj-body {
-      padding: 16px;
+      padding: 20px;
       display: flex;
       gap: 12px;
       flex: 1;
@@ -465,48 +521,206 @@
       flex: 1;
     }
     .pj-desc {
-      font-size: 0.85rem;
+      font-size: 0.88rem;
       color: var(--text-3);
-      line-height: 1.5;
-      margin-bottom: 12px;
+      line-height: 1.6;
+      margin-bottom: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
     .pj-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 8px;
     }
     .pj-tag {
       background: var(--surface2);
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 0.7rem;
+      padding: 6px 12px;
+      border-radius: 14px;
+      font-size: 0.72rem;
       color: var(--primary);
-      font-weight: 500;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    .pj-card:hover .pj-tag {
+      background: var(--gradient);
+      color: white;
     }
     .pj-arr {
-      width: 40px;
-      height: 40px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: var(--surface2);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       color: var(--primary);
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       flex-shrink: 0;
     }
     .pj-card:hover .pj-arr {
       background: var(--primary);
       color: white;
-      transform: rotate(45deg);
+      transform: rotate(45deg) scale(1.1);
     }
     .pj-foot {
-      padding: 12px 16px;
-      font-size: 0.7rem;
+      padding: 14px 20px;
+      font-size: 0.75rem;
       color: var(--text-4);
       border-top: 1px solid var(--border);
       background: var(--surface2);
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    /* Scroll Buttons */
+    .scroll-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: white;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      cursor: pointer;
+      font-size: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all 0.3s ease;
+      color: var(--primary);
+      opacity: 0.95;
+      backdrop-filter: blur(10px);
+    }
+
+    .scroll-btn:hover {
+      background: var(--gradient);
+      color: white;
+      border-color: transparent;
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .scroll-btn:active {
+      transform: translateY(-50%) scale(0.95);
+    }
+
+    .scroll-left {
+      left: 10px;
+    }
+
+    .scroll-right {
+      right: 10px;
+    }
+
+    /* Indicators */
+    .indicators {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+
+    .indicator {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+
+    .indicator.active {
+      background: var(--primary);
+      width: 32px;
+      border-radius: 10px;
+      border-color: var(--primary-light);
+    }
+
+    .indicator:hover {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+
+    /* Mobile Optimizations */
+    @media (max-width: 768px) {
+      .pj-card {
+        width: 320px;
+        max-width: 80vw;
+      }
+      
+      .scroll-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+      }
+      
+      .projects-scroll {
+        padding: 16px 40px;
+        gap: 16px;
+      }
+
+      .pj-img {
+        height: 180px;
+      }
+
+      .pj-body {
+        padding: 16px;
+      }
+
+      .pj-desc {
+        font-size: 0.82rem;
+      }
+
+      .pj-name {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .pj-card {
+        width: 280px;
+        max-width: 75vw;
+      }
+      
+      .scroll-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+      }
+      
+      .projects-scroll {
+        padding: 12px 30px;
+        gap: 12px;
+      }
+
+      .pj-img {
+        height: 160px;
+      }
+
+      .pj-body {
+        padding: 14px;
+      }
+
+      .pj-desc {
+        font-size: 0.78rem;
+      }
+
+      .pj-name {
+        font-size: 1rem;
+      }
+
+      .pj-tag {
+        font-size: 0.68rem;
+        padding: 4px 10px;
+      }
     }
 
     /* Skills Section */
@@ -868,7 +1082,6 @@
       .hero-visual { display: none; }
       .about-grid { grid-template-columns: 1fr; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
-      .pj-grid { grid-template-columns: 1fr 1fr; }
       .achievements-grid { grid-template-columns: 1fr 1fr; }
       .contact-wrapper { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr 1fr; }
@@ -881,7 +1094,6 @@
       .section { padding: 80px 20px; }
       #hero { padding: 100px 20px 60px; }
       .skills-grid { grid-template-columns: 1fr; }
-      .pj-grid { grid-template-columns: 1fr; }
       .achievements-grid { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
@@ -1056,49 +1268,135 @@
   </section>
   <div class="section-divider"></div>
 
+  <!-- ========== NEW HORIZONTAL PROJECTS SECTION ========== -->
   <section id="projects">
-    <div class="section">
-      <div class="section-header reveal">
+    <div class="section" style="max-width: 100%; padding-left: 0; padding-right: 0;">
+      <div class="section-header reveal" style="padding: 0 40px;">
         <div class="section-tag"><span class="line"></span>Portfolio<span class="line"></span></div>
         <h2 class="section-title">Featured <span>Projects</span></h2>
-        <p class="section-subtitle">A selection of my best work, each crafted with care and technical precision.</p>
+        <p class="section-subtitle">Swipe through my best work — each crafted with care and technical precision.</p>
       </div>
-      <div class="pj-grid">
-        <a href="https://user38747.github.io/parfumes/" target="_blank" class="pj-card reveal">
-          <div class="pj-img">
-            <img src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?q=80&w=800&auto=format&fit=crop" alt="متجر العطور"/>
-            <div class="pj-num">01</div>
-            <div class="pj-live">● Live</div>
-            <div class="pj-img-title"><div class="pj-cat">E-Commerce · Perfume Store</div><div class="pj-name">متجر العطور</div></div>
-          </div>
-          <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">متجر إلكتروني فاخر متخصص في العطور الراقية — واجهة أنيقة وتجربة تسوق استثنائية.</p><div class="pj-tags"><span class="pj-tag">HTML5</span><span class="pj-tag">CSS3</span><span class="pj-tag">JavaScript</span></div></div><div class="pj-arr">↗</div></div>
-          <div class="pj-foot">user38747.github.io/parfumes</div>
-        </a>
-        <a href="https://user38747.github.io/NOIR_Shop/" target="_blank" class="pj-card reveal">
-          <div class="pj-img"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop" alt="NOIR Shop"/><div class="pj-num">02</div><div class="pj-live">● Live</div><div class="pj-img-title"><div class="pj-cat">E-Commerce · Accessories</div><div class="pj-name">NOIR — الاكسسوارات</div></div></div>
-          <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">متجر NOIR للاكسسوارات الفاخرة — هوية بصرية داكنة وأنيقة.</p><div class="pj-tags"><span class="pj-tag">HTML5</span><span class="pj-tag">CSS3</span><span class="pj-tag">JS</span></div></div><div class="pj-arr">↗</div></div>
-          <div class="pj-foot">github.io/NOIR_Shop</div>
-        </a>
-        <a href="https://shopamine.ct.ws" target="_blank" class="pj-card reveal">
-          <div class="pj-img"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop" alt="Beauty & Elegance Store"/><div class="pj-num">03</div><div class="pj-live">● Live</div><div class="pj-img-title"><div class="pj-cat">Cosmetics · Beauty</div><div class="pj-name">متجر مواد التجميل</div></div></div>
-          <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">متجر إلكتروني متخصص في مستحضرات التجميل والعناية بالبشرة — تصميم أنثوي راقٍ.</p><div class="pj-tags"><span class="pj-tag">PHP</span><span class="pj-tag">MySQL</span><span class="pj-tag">CSS3</span></div></div><div class="pj-arr">↗</div></div>
-          <div class="pj-foot">shopamine.ct.ws</div>
-        </a>
-        <a href="https://user38747.github.io/rendez_vous/" target="_blank" class="pj-card reveal">
-          <div class="pj-img"><img src="https://images.unsplash.com/photo-1506784365847-bbad939e9501?q=80&w=800&auto=format&fit=crop" alt="نظام حجز المواعيد"/><div class="pj-num">04</div><div class="pj-live">● Live</div><div class="pj-img-title"><div class="pj-cat">Web App · Booking System</div><div class="pj-name">نظام حجز المواعيد</div></div></div>
-          <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">نظام حجز مواعيد متكامل — تقويم تفاعلي، إدارة العملاء.</p><div class="pj-tags"><span class="pj-tag">HTML5</span><span class="pj-tag">CSS3</span><span class="pj-tag">JS</span></div></div><div class="pj-arr">↗</div></div>
-          <div class="pj-foot">github.io/rendez_vous</div>
-        </a>
-        <a href="https://user38747.github.io/foood/" target="_blank" class="pj-card reveal">
-          <div class="pj-img"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" alt="موقع مطعم"/><div class="pj-num">05</div><div class="pj-live">● Live</div><div class="pj-img-title"><div class="pj-cat">Restaurant · Online Ordering</div><div class="pj-name">موقع مطعم مع طلب أونلاين</div></div></div>
-          <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">موقع مطعم احترافي مع قائمة طعام تفاعلية ونظام طلب أونلاين.</p><div class="pj-tags"><span class="pj-tag">HTML5</span><span class="pj-tag">CSS3</span><span class="pj-tag">JS</span></div></div><div class="pj-arr">↗</div></div>
-          <div class="pj-foot">github.io/foood</div>
-        </a>
-        <a href="#" class="pj-card reveal">
-          <div class="pj-img"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop" alt="Opulent Watches"/><div class="pj-num">06</div><div class="pj-live" style="background:#64748b;">◌ Soon</div><div class="pj-img-title"><div class="pj-cat">Luxury Brand · E-Commerce</div><div class="pj-name">Opulent Watches</div></div></div>
-          <div class="pj-body"><div class="pj-body-left"><p class="pj-desc">منصة تجارة إلكترونية فاخرة لساعات راقية — هوية بصرية احترافية.</p><div class="pj-tags"><span class="pj-tag">Branding</span><span class="pj-tag">JavaScript</span><span class="pj-tag">CSS3</span></div></div><div class="pj-arr">↗</div></div>
-          <div class="pj-foot">Coming Soon</div>
-        </a>
+      
+      <div class="projects-wrapper reveal">
+        <button class="scroll-btn scroll-left" onclick="scrollProjects(-380)" aria-label="Scroll left">❮</button>
+        <button class="scroll-btn scroll-right" onclick="scrollProjects(380)" aria-label="Scroll right">❯</button>
+        
+        <div class="projects-scroll" id="projectsScroll">
+          <!-- Project 6 -->
+          <a href="https://user38747.github.io/noble_Time/" class="pj-card">
+            <div class="pj-img">
+              <img src="96e62032-9dda-432a-9004-1a1be7b0c587.jpg" alt="Opulent Watches" loading="lazy"/>
+              <div class="pj-num">01</div>
+              <div class="pj-live" style="background:#64748b;">◌ Soon</div>
+              <div class="pj-img-title">
+                <div class="pj-cat">Luxury Brand · E-Commerce</div>
+                <div class="pj-name">Opulent Watches</div>
+              </div>
+            </div>
+            <div class="pj-body">
+              <div class="pj-body-left">
+                <p class="pj-desc">منصة تجارة إلكترونية فاخرة لساعات راقية — هوية بصرية احترافية.</p>
+                <div class="pj-tags">
+                 
+                </div>
+              </div>
+              <div class="pj-arr">↗</div>
+            </div>
+           
+          </a>
+          <!-- Project 5 -->
+          <a href="https://user38747.github.io/foood/" target="_blank" class="pj-card">
+            <div class="pj-img">
+              <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=800&auto=format&fit=crop" alt="موقع مطعم" loading="lazy"/>
+              <div class="pj-num">02</div>
+              <div class="pj-live">● Live</div>
+              <div class="pj-img-title">
+                <div class="pj-cat">Restaurant · Online Ordering</div>
+                <div class="pj-name">موقع مطعم مع طلب أونلاين</div>
+              </div>
+            </div>
+            <div class="pj-body">
+              <div class="pj-body-left">
+                <p class="pj-desc">موقع مطعم احترافي مع قائمة طعام تفاعلية ونظام طلب أونلاين.</p>
+                <div class="pj-tags">
+                 
+                </div>
+              </div>
+              <div class="pj-arr">↗</div>
+            </div>
+            
+          </a>
+
+          <!-- Project 1 -->
+          <a href="https://user38747.github.io/parfumes/" target="_blank" class="pj-card">
+            <div class="pj-img">
+              <img src="téléchargement.jpg" alt="متجر العطور" loading="lazy"/>
+              <div class="pj-num">03</div>
+              <div class="pj-live">● Live</div>
+              <div class="pj-img-title">
+                <div class="pj-cat">E-Commerce · Perfume Store</div>
+                <div class="pj-name">متجر العطور</div>
+              </div>
+            </div>
+            <div class="pj-body">
+              <div class="pj-body-left">
+                <p class="pj-desc">متجر إلكتروني فاخر متخصص في العطور الراقية — واجهة أنيقة وتجربة تسوق استثنائية.</p>
+                
+              </div>
+              <div class="pj-arr">↗</div>
+            </div>
+            
+          </a>
+
+          <!-- Project 2 -->
+          <a href="https://user38747.github.io/NOIR_Shop/" target="_blank" class="pj-card">
+            <div class="pj-img">
+              <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop" alt="NOIR Shop" loading="lazy"/>
+              <div class="pj-num">04</div>
+              <div class="pj-live">● Live</div>
+              <div class="pj-img-title">
+                <div class="pj-cat">E-Commerce · Accessories</div>
+                <div class="pj-name">NOIR — الاكسسوارات</div>
+              </div>
+            </div>
+            <div class="pj-body">
+              <div class="pj-body-left">
+                <p class="pj-desc">متجر NOIR للاكسسوارات الفاخرة — هوية بصرية داكنة وأنيقة.</p>
+              
+              </div>
+              <div class="pj-arr">↗</div>
+            </div>
+            
+          </a>
+
+
+          <!-- Project 4 -->
+          <a href="https://user38747.github.io/rendez_vous/" target="_blank" class="pj-card">
+            <div class="pj-img">
+              <img src="Gemini_Generated_Image_8cubqz8cubqz8cub.png" alt="نظام حجز المواعيد" loading="lazy"/>
+              <div class="pj-num">05</div>
+              <div class="pj-live">● Live</div>
+              <div class="pj-img-title">
+                <div class="pj-cat">Web App · Booking System</div>
+                <div class="pj-name">نظام حجز المواعيد</div>
+              </div>
+            </div>
+            <div class="pj-body">
+              <div class="pj-body-left">
+                <p class="pj-desc">نظام حجز مواعيد متكامل — تقويم تفاعلي، إدارة العملاء.</p>
+                <div class="pj-tags">
+                 
+                </div>
+              </div>
+              <div class="pj-arr">↗</div>
+            </div>
+            
+          </a>
+            
+          
+        </div>
+
+        <div class="indicators" id="indicators"></div>
       </div>
     </div>
   </section>
@@ -1216,6 +1514,136 @@
       applyMagneticEffect(btn);
     });
     document.querySelectorAll(".skill-category").forEach(card => applyTiltEffect(card));
+
+    // ========== HORIZONTAL SCROLL FUNCTIONS ==========
+    const projectsScroll = document.getElementById('projectsScroll');
+    const indicatorsContainer = document.getElementById('indicators');
+    let scrollTimeout;
+
+    // Create indicators
+    function createIndicators() {
+      const cards = document.querySelectorAll('#projectsScroll .pj-card');
+      indicatorsContainer.innerHTML = '';
+      
+      cards.forEach((card, index) => {
+        const indicator = document.createElement('div');
+        indicator.classList.add('indicator');
+        if (index === 0) indicator.classList.add('active');
+        indicator.addEventListener('click', () => scrollToCard(index));
+        indicatorsContainer.appendChild(indicator);
+      });
+    }
+
+    // Scroll to specific card
+    function scrollToCard(index) {
+      const cards = document.querySelectorAll('#projectsScroll .pj-card');
+      if (cards[index]) {
+        cards[index].scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+    }
+
+    // Scroll with buttons
+    function scrollProjects(amount) {
+      projectsScroll.scrollBy({
+        left: amount,
+        behavior: 'smooth'
+      });
+    }
+
+    // Update active indicator
+    function updateActiveIndicator() {
+      const cards = document.querySelectorAll('#projectsScroll .pj-card');
+      const indicators = document.querySelectorAll('#indicators .indicator');
+      
+      let activeIndex = 0;
+      let minDistance = Infinity;
+      
+      cards.forEach((card, index) => {
+        const cardRect = card.getBoundingClientRect();
+        const containerRect = projectsScroll.getBoundingClientRect();
+        const distance = Math.abs(cardRect.left + cardRect.width / 2 - 
+                                 (containerRect.left + containerRect.width / 2));
+        
+        if (distance < minDistance) {
+          minDistance = distance;
+          activeIndex = index;
+        }
+      });
+      
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === activeIndex);
+      });
+    }
+
+    // Toggle scroll buttons visibility
+    function toggleScrollButtons() {
+      const scrollLeft = document.querySelector('.scroll-left');
+      const scrollRight = document.querySelector('.scroll-right');
+      
+      const isAtStart = projectsScroll.scrollLeft <= 5;
+      const isAtEnd = projectsScroll.scrollLeft + projectsScroll.clientWidth >= 
+                     projectsScroll.scrollWidth - 10;
+      
+      if (scrollLeft) scrollLeft.style.opacity = isAtStart ? '0.3' : '0.95';
+      if (scrollRight) scrollRight.style.opacity = isAtEnd ? '0.3' : '0.95';
+    }
+
+    // Scroll event listener
+    projectsScroll.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        updateActiveIndicator();
+        toggleScrollButtons();
+      }, 100);
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    projectsScroll.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    projectsScroll.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    });
+
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        projectsScroll.scrollBy({
+          left: diff * 2,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        scrollProjects(-380);
+      } else if (e.key === 'ArrowRight') {
+        scrollProjects(380);
+      }
+    });
+
+    // Initialize
+    createIndicators();
+    toggleScrollButtons();
+    updateActiveIndicator();
+
+    window.addEventListener('resize', () => {
+      toggleScrollButtons();
+      updateActiveIndicator();
+    });
 
     // Language Toggle
     let currentLang = 'en';
